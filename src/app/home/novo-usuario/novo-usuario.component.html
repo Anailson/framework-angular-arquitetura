@@ -4,9 +4,18 @@
 <form class="form mt-4" [formGroup]="novoUsuarioForm" (ngSubmit)="cadastrar()">
     <div class="mb-3">
        <input placeholder="e-mail" class="form-control" formControlName="email"/>
-    </div>
+       <app-mensagem *ngIf="novoUsuarioForm.get('email')?.errors?.required &&
+          novoUsuarioForm.get('email')?.touched">mensagem="Email obrigatório"
+       </app-mensagem>
+       <app-mensagem *ngIf="novoUsuarioForm.get('email')?.errors?.email &&
+          novoUsuarioForm.get('email')?.touched" mensagem="E-mail no formato incorreto">
+       </app-mensagem>
+    </div><!--EMAIL-->
     <div class="mb-3">
         <input  placeholder="Nome Completo" class="form-control" formControlName="fullName"/>
+        <app-mensagem *ngIf="novoUsuarioForm.get('fullName')?.errors &&
+          novoUsuarioForm.get('fullName')?.touched" mensagem="Nome incorreto">
+        </app-mensagem>
     </div>
     <div class="mb-3">
         <input placeholder="Usuário" class="form-control" formControlName="userName"/>
