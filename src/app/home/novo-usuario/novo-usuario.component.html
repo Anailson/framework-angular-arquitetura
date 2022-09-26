@@ -20,9 +20,11 @@
     <div class="mb-3">
         <input placeholder="Usuário" class="form-control" formControlName="userName"/>
         <app-mensagem *ngIf="novoUsuarioForm.get('userName')?.errors?.minusculo &&
-        novoUsuarioForm.get('userName')?.touched"
-        mensagem="Usuário deve ser letra minúscula">
-
+           novoUsuarioForm.get('userName')?.touched"
+          mensagem="Usuário deve ser letra minúscula">
+        </app-mensagem>
+        <app-mensagem *ngIf="novoUsuarioForm.get('userName')?.errors?.usuarioExistente"
+          mensagem="Usuário já existe">
         </app-mensagem>
     </div>
     <div class="mb-3">
